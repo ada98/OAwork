@@ -1,24 +1,24 @@
 create database oa;
 
---Ô±¹¤±í
-	--Ô±¹¤±àºÅ
-	--Ô±¹¤ĞÕÃû
-	--µÇÂ¼ÃÜÂë
-	--ĞÔ±ğ
-	--ÁªÏµ·½Ê½
-	--ÓÊÏä
-	--×¡Ö·
-	--Éí·İÖ¤
-	--¹¤×Ê
-	--ÕÕÆ¬
-	--ÔÚÖ°×´Ì¬
-	--Ö°Îñid
-	--²¿ÃÅid
+--å‘˜å·¥è¡¨
+	--å‘˜å·¥ç¼–å·
+	--å‘˜å·¥å§“å
+	--ç™»å½•å¯†ç 
+	--æ€§åˆ«
+	--è”ç³»æ–¹å¼
+	--é‚®ç®±
+	--ä½å€
+	--èº«ä»½è¯
+	--å·¥èµ„
+	--ç…§ç‰‡
+	--åœ¨èŒçŠ¶æ€
+	--èŒåŠ¡id
+	--éƒ¨é—¨id
 create table users(
 	u_id int primary key auto_increment,
 	u_name varchar(200) not null,
 	u_pwd varchar(200) not null,
-	u_sex varchar(2) default 'ÄĞ' not null,
+	u_sex varchar(2) default 'ç”·' not null,
 	u_tel varchar(20) not null,
 	u_email varchar(100),		
 	u_dress varchar(100) ,			
@@ -32,9 +32,9 @@ create table users(
 	temp2 varchar(200)
 );
 
---²¿ÃÅ±í
-	--²¿ÃÅ±àºÅ
-	--²¿ÃÅÃû
+--éƒ¨é—¨è¡¨
+	--éƒ¨é—¨ç¼–å·
+	--éƒ¨é—¨å
 create table department(
 	d_id int primary key auto_increment,
 	d_name varchar(100),
@@ -42,11 +42,11 @@ create table department(
 	temp2 varchar(200)
 );
 
---Ö°Îñ±í
-	--Ö°Îñ±àºÅ
-	--Ö°Îñ
-	--ÉÏÒ»¼¶
-	--ÏÂÒ»¼¶
+--èŒåŠ¡è¡¨
+	--èŒåŠ¡ç¼–å·
+	--èŒåŠ¡
+	--ä¸Šä¸€çº§
+	--ä¸‹ä¸€çº§
 create table role(
 	r_id int primary key auto_increment,
 	r_name varchar(100) not null,
@@ -56,15 +56,15 @@ create table role(
 	temp2 varchar(200)
 );
 			
---ÏûÏ¢±í
-	--ÏûÏ¢±àºÅ
-	--±êÌâ
-	--·¢ËÍÈË
-	--½ÓÊÕÈË
-	--ÄÚÈİ
-	--·¢ËÍÊ±¼ä
-	--¸½¼ş
-	--ÊÇ·ñÒÑÔÄ
+--æ¶ˆæ¯è¡¨
+	--æ¶ˆæ¯ç¼–å·
+	--æ ‡é¢˜
+	--å‘é€äºº
+	--æ¥æ”¶äºº
+	--å†…å®¹
+	--å‘é€æ—¶é—´
+	--é™„ä»¶
+	--æ˜¯å¦å·²é˜…
 create table message(
 	m_id int primary key auto_increment,
 	m_title varchar(200) not null,
@@ -78,13 +78,13 @@ create table message(
 	temp2 varchar(200)	
 );
 
---¹«ÎÄ±í
-	--¹«ÎÄ±àºÅ
-	--±êÌâ
-	--·¢ËÍÈË
-	--¹«ÎÄÊ±¼ä
-	--¹«ÎÄÄÚÈİ
-	--²é¿´´ÎÊı
+--å…¬æ–‡è¡¨
+	--å…¬æ–‡ç¼–å·
+	--æ ‡é¢˜
+	--å‘é€äºº
+	--å…¬æ–‡æ—¶é—´
+	--å…¬æ–‡å†…å®¹
+	--æŸ¥çœ‹æ¬¡æ•°
 create table document(
 	do_id int primary key auto_increment, 
 	do_title varchar(200) not null,
@@ -96,15 +96,15 @@ create table document(
 	temp2 varchar(200)
 );
 
---ÏÈÉú³É¹«ÎÄ£¬½»¸øÉÏÒ»¼¶ÉóÅú£¬È»ºó¸ù¾İÉóÅúÈË²é¿´ÊÇ·ñ»¹ÓĞÉÏÒ»¼¶£¬Ìí¼ÓÉóÅúÒâ¼û±íÊı¾İ
+--å…ˆç”Ÿæˆå…¬æ–‡ï¼Œäº¤ç»™ä¸Šä¸€çº§å®¡æ‰¹ï¼Œç„¶åæ ¹æ®å®¡æ‰¹äººæŸ¥çœ‹æ˜¯å¦è¿˜æœ‰ä¸Šä¸€çº§ï¼Œæ·»åŠ å®¡æ‰¹æ„è§è¡¨æ•°æ®
 
---ÉóÅúÒâ¼û±í
-	--±ØĞëÓÃ³ÌĞòÉú³ÉµÄid
-	--¹«ÎÄ±àºÅ
-	--ÉóÅúÈË
-	--ÉóÅúÊ±¼ä
-	--ÉóÅúÒâ¼û  0ÎªÎ´ÉóÅú£¬1ÎªÍ¨¹ı£¬2ÎªÎ´Í¨¹ı
-	--ÉóÅúÀíÓÉ
+--å®¡æ‰¹æ„è§è¡¨
+	--å¿…é¡»ç”¨ç¨‹åºç”Ÿæˆçš„id
+	--å…¬æ–‡ç¼–å·
+	--å®¡æ‰¹äºº
+	--å®¡æ‰¹æ—¶é—´
+	--å®¡æ‰¹æ„è§  0ä¸ºæœªå®¡æ‰¹ï¼Œ1ä¸ºé€šè¿‡ï¼Œ2ä¸ºæœªé€šè¿‡
+	--å®¡æ‰¹ç†ç”±
 create table opinion(
 	o_id int primary key auto_increment,
 	do_id int not null,
@@ -116,13 +116,13 @@ create table opinion(
 	temp2 varchar(200)	
 ); 
 
---¹«¸æÍ¨Öª±í
-	--¹«¸æ±àºÅ
-	--±êÌâ
-	--·¢²¼ÈË
-	--·¢²¼²¿ÃÅ
-	--¹«¸æÄÚÈİ
-	--¹«¸æÊ±¼ä
+--å…¬å‘Šé€šçŸ¥è¡¨
+	--å…¬å‘Šç¼–å·
+	--æ ‡é¢˜
+	--å‘å¸ƒäºº
+	--å‘å¸ƒéƒ¨é—¨
+	--å…¬å‘Šå†…å®¹
+	--å…¬å‘Šæ—¶é—´
 create table notic(
 	n_id int primary key auto_increment,
 	n_title varchar(200) not null,
@@ -134,14 +134,14 @@ create table notic(
 	temp2 varchar(200)
 )
 
---ÎÄ¼ş±í
-	--ÎÄ¼ş±àºÅ
-	--ÎÄ¼şÃû	
-	--ÎÄ¼şÂ·¾¶	
-	--ÎÄ¼ş´óĞ¡
-	--Íâ¼ü£¬user±íµÄid,ÎÄ¼ş·¢²¼Õß
-	--ÉÏ´«Ê±¼ä
-	--ÎÄ¼ş×´Ì¬ ÊÇ·ñ¿É¶Á¡£1´ú±í¿É¶Á£¬0´ú±í²»¿É¶Á
+--æ–‡ä»¶è¡¨
+	--æ–‡ä»¶ç¼–å·
+	--æ–‡ä»¶å	
+	--æ–‡ä»¶è·¯å¾„	
+	--æ–‡ä»¶å¤§å°
+	--å¤–é”®ï¼Œuserè¡¨çš„id,æ–‡ä»¶å‘å¸ƒè€…
+	--ä¸Šä¼ æ—¶é—´
+	--æ–‡ä»¶çŠ¶æ€ æ˜¯å¦å¯è¯»ã€‚1ä»£è¡¨å¯è¯»ï¼Œ0ä»£è¡¨ä¸å¯è¯»
 create table file(
 	fid int primary key auto_increment,
 	fname varchar(200) not null,
