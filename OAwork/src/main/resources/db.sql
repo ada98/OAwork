@@ -1,227 +1,167 @@
-create database votedb;
+create database oa;
 
-use votedb;
+--Ô±¹¤±í
+	--Ô±¹¤±àºÅ
+	--Ô±¹¤ĞÕÃû
+	--µÇÂ¼ÃÜÂë
+	--ĞÔ±ğ
+	--ÁªÏµ·½Ê½
+	--ÓÊÏä
+	--×¡Ö·
+	--Éí·İÖ¤
+	--¹¤×Ê
+	--ÕÕÆ¬
+	--ÔÚÖ°×´Ì¬
+	--Ö°Îñid
+	--²¿ÃÅid
+create table users(
+	u_id int primary key auto_increment,
+	u_name varchar(200) not null,
+	u_pwd varchar(200) not null,
+	u_sex varchar(2) default 'ÄĞ' not null,
+	u_tel varchar(20) not null,
+	u_email varchar(100),		
+	u_dress varchar(100) ,			
+	u_card varchar(30) not null,		
+	s_alary double not null,		
+	u_photo varchar(200) not null,		
+	u_status int default 1,   		
+	r_id int,
+	d_id int,
+	temp1 varchar(200),
+	temp2 varchar(200)
+);
 
---ç”¨æˆ·è¡¨
-create table voteuser
-(
-  uid   int primary key auto_increment,
-  uname varchar(50),
-  pwd varchar(50)
+--²¿ÃÅ±í
+	--²¿ÃÅ±àºÅ
+	--²¿ÃÅÃû
+create table department(
+	d_id int primary key auto_increment,
+	d_name varchar(100),
+	temp1 varchar(200),
+	temp2 varchar(200)
+);
+
+--Ö°Îñ±í
+	--Ö°Îñ±àºÅ
+	--Ö°Îñ
+	--ÉÏÒ»¼¶
+	--ÏÂÒ»¼¶
+create table role(
+	r_id int primary key auto_increment,
+	r_name varchar(100) not null,
+	r_before varchar(100),
+	r_next varchar(100),
+	temp1 varchar(200),
+	temp2 varchar(200)
+);
+			
+--ÏûÏ¢±í
+	--ÏûÏ¢±àºÅ
+	--±êÌâ
+	--·¢ËÍÈË
+	--½ÓÊÕÈË
+	--ÄÚÈİ
+	--·¢ËÍÊ±¼ä
+	--¸½¼ş
+	--ÊÇ·ñÒÑÔÄ
+create table message(
+	m_id int primary key auto_increment,
+	m_title varchar(200) not null,
+	m_send int not null,
+	m_recevie int not null,
+	m_content varchar(200) not null,
+	m_date date not null,
+	m_file varchar(200),
+	m_status int default 0,
+	temp1 varchar(200),
+	temp2 varchar(200)	
+);
+
+--¹«ÎÄ±í
+	--¹«ÎÄ±àºÅ
+	--±êÌâ
+	--·¢ËÍÈË
+	--¹«ÎÄÊ±¼ä
+	--¹«ÎÄÄÚÈİ
+	--²é¿´´ÎÊı
+create table document(
+	do_id int primary key auto_increment, 
+	do_title varchar(200) not null,
+	do_send int not null,
+	do_time date,
+	do_content varchar(100),
+	do_see int default 0,
+	temp1 varchar(200),
+	temp2 varchar(200)
+);
+
+--ÏÈÉú³É¹«ÎÄ£¬½»¸øÉÏÒ»¼¶ÉóÅú£¬È»ºó¸ù¾İÉóÅúÈË²é¿´ÊÇ·ñ»¹ÓĞÉÏÒ»¼¶£¬Ìí¼ÓÉóÅúÒâ¼û±íÊı¾İ
+
+--ÉóÅúÒâ¼û±í
+	--±ØĞëÓÃ³ÌĞòÉú³ÉµÄid
+	--¹«ÎÄ±àºÅ
+	--ÉóÅúÈË
+	--ÉóÅúÊ±¼ä
+	--ÉóÅúÒâ¼û  0ÎªÎ´ÉóÅú£¬1ÎªÍ¨¹ı£¬2ÎªÎ´Í¨¹ı
+	--ÉóÅúÀíÓÉ
+create table opinion(
+	o_id int primary key auto_increment,
+	do_id int not null,
+	o_userid varchar(200),
+	o_time date,
+	o_opinion varchar(200) default 0,
+	o_reason varchar(100),
+	temp1 varchar(200),
+	temp2 varchar(200)	
+); 
+
+--¹«¸æÍ¨Öª±í
+	--¹«¸æ±àºÅ
+	--±êÌâ
+	--·¢²¼ÈË
+	--·¢²¼²¿ÃÅ
+	--¹«¸æÄÚÈİ
+	--¹«¸æÊ±¼ä
+create table notic(
+	n_id int primary key auto_increment,
+	n_title varchar(200) not null,
+	n_send int not null,
+	n_department varchar(100) not null,
+	n_content varchar(100),
+	n_time date,
+	temp1 varchar(200),
+	temp2 varchar(200)
 )
 
-select * from voteuser where uname='a' and pwd='6f9b0a55df8ac28564cb9f63a10be8af6ab3f7c2';
+--ÎÄ¼ş±í
+	--ÎÄ¼ş±àºÅ
+	--ÎÄ¼şÃû	
+	--ÎÄ¼şÂ·¾¶	
+	--ÎÄ¼ş´óĞ¡
+	--Íâ¼ü£¬user±íµÄid,ÎÄ¼ş·¢²¼Õß
+	--ÉÏ´«Ê±¼ä
+	--ÎÄ¼ş×´Ì¬ ÊÇ·ñ¿É¶Á¡£1´ú±í¿É¶Á£¬0´ú±í²»¿É¶Á
+create table file(
+	fid int primary key auto_increment,
+	fname varchar(200) not null,
+	fpath varchar(200) not null,
+	fsize double,
+	fuser int,
+	ftime date,
+	fstatus int default 1 ,
+	temp1 varchar(200),
+	temp2 varchar(200)
+);
 
-update voteuser set pwd='6f9b0a55df8ac28564cb9f63a10be8af6ab3f7c2';
-create table votesubject
-(
-  vsid    int primary key auto_increment,       
-  title   varchar( 2000),
-  stype int
-)
+alter table users
+    add constraint fk_users
+       foreign key( r_id ) references role(r_id);
 
+alter table users
+    add constraint fk_users_2
+       foreign key( d_id ) references department(d_id);
 
---æŠ•ç¥¨å†…å®¹å¯¹åº”çš„é€‰é¡¹è¡¨
-create table voteoption
-(
-  voteid     int primary key auto_increment,    
-  voteoption    VARCHAR(2000) not null,   
-  vsid     int not null, 
-  voteorder  int not null  
-)
-
-alter table voteoption
-    add constraint fk_voteoption
-       foreign key( vsid) references votesubject(vsid);
-
-
---ç”¨æˆ·æŠ•ç¥¨å–å€¼è¡¨
-create table voteitem
-(
-  viid      int primary key auto_increment, 
-  voteid      int  not null, 
-  vsid     int not null, 
-  uid int not null 
-)
-
-
-
-
-alter table voteitem
-    add constraint fk_voteitem_voteid
-       foreign key( voteid) references voteoption(voteid);
-alter table voteitem
-    add constraint fk_voteitem_vsid
-       foreign key( vsid) references votesubject(vsid);
-alter table voteitem
-    add constraint fk_voteitem_uid
-       foreign key( uid) references voteuser(uid);
-
-
-
---æ·»åŠ ç”¨æˆ·
-insert into voteuser ( uname, pwd)
-values ('a', 'a');
-insert into voteuser ( uname, pwd)
-values ('b', 'a');
-insert into voteuser ( uname, pwd)
-values ('c', 'a');
-
-
---æ·»åŠ æŠ•ç¥¨ä¸»é¢˜
-insert into votesubject (TITLE, sTYPE)
-values ( 'é€‰å‡ºä½ å¿ƒç›®ä¸­æœ€å¥½çš„ä¸‹è½½å·¥å…·', 2);
-insert into votesubject (TITLE, sTYPE)
-values ( 'é€‰å‡ºä½ å¿ƒç›®ä¸­æœ€å¥½çš„è¾“å…¥æ³•', 1);
-insert into votesubject (TITLE, sTYPE)
-values ( 'é€‰å‡ºä½ å¿ƒç›®ä¸­æœ€å¥½çš„ç½‘ç»œèŠå¤©å·¥å…·', 2);
-insert into votesubject (TITLE, sTYPE)
-values ( 'ä½ æœ€æƒ³åŒºçš„åœ°æ–¹', 1);
-insert into votesubject (TITLE, sTYPE)
-values ( 'é€‰å‡ºä½ å¿ƒç›®ä¸­æœ€å¥½çš„æµè§ˆå™¨', 1);
-insert into votesubject (TITLE, sTYPE)
-values ('é€‰å‡ºä½ å¿ƒç›®ä¸­æœ€å¥½çš„æ€æ¯’è½¯ä»¶', 1);
-insert into votesubject(title, stype)
-values( 'ä¸­å›½çš„é¦–éƒ½æ˜¯?',1);
-
---æ·»åŠ ä¸»é¢˜ä¸­çš„é€‰é¡¹
-insert into voteoption ( voteoption, vsid, voteorder)
-values ('è…¾è®¯QQ', 3, 1);
-insert into voteoption ( voteoption, vsid, voteorder)
-values ('MSN', 3, 2);
-insert into voteoption ( voteoption, vsid, voteorder)
-values ( 'è¿…é›·', 1, 1);
-insert into voteoption ( voteoption, vsid, voteorder)
-values ('æ–°æµªUC', 3, 3);
-insert into voteoption ( voteoption, vsid, voteorder)
-values ( 'é£ä¿¡', 3, 4);
-insert into voteoption ( voteoption, vsid, voteorder)
-values ( 'Skype', 3, 5);
-insert into voteoption ( voteoption, vsid, voteorder)
-values ( 'é˜¿é‡Œæ—ºæ—º', 3, 6);
-insert into voteoption ( voteoption, vsid, voteorder)
-values ('ç™¾åº¦HI', 3, 7);
-insert into voteoption ( voteoption, vsid, voteorder)
-values ( 'å¾®è½¯IEæµè§ˆå™¨', 5, 1);
-insert into voteoption ( voteoption, vsid, voteorder)
-values ( 'ç«ç‹ï¼ˆFirefoxï¼‰æµè§ˆå™¨', 5, 2);
-insert into voteoption ( voteoption, vsid, voteorder)
-values ( 'ç½‘é™…å¿«è½¦', 1, 2);
-insert into voteoption ( voteoption, vsid, voteorder)
-values ( 'ç”µé©´', 1, 3);
-insert into voteoption ( voteoption, vsid, voteorder)
-values ( 'æ¯”ç‰¹ç²¾çµ', 1, 4);
-insert into voteoption ( voteoption, vsid, voteorder)
-values ( 'è¶…çº§æ—‹é£', 1, 5);
-insert into voteoption ( voteoption, vsid, voteorder)
-values ( 'æœç‹—æ‹¼éŸ³', 2, 1);
-insert into voteoption ( voteoption, vsid, voteorder)
-values ( 'æœç‹—äº”ç¬”', 2, 2);
-insert into voteoption ( voteoption, vsid, voteorder)
-values ( 'QQæ‹¼éŸ³', 2, 3);
-insert into voteoption ( voteoption, vsid, voteorder)
-values ( 'QQäº”ç¬”', 2, 4);
-insert into voteoption ( voteoption, vsid, voteorder)
-values ( 'è°·æ­Œæ‹¼éŸ³', 2, 5);
-insert into voteoption ( voteoption, vsid, voteorder)
-values ( 'ç´«å…‰æ‹¼éŸ³', 2, 6);
-insert into voteoption ( voteoption, vsid, voteorder)
-values ( 'æ™ºèƒ½ABC', 2, 7);
-insert into voteoption ( voteoption, vsid, voteorder)
-values ( 'å¾®è½¯æ‹¼éŸ³', 2, 8);
-insert into voteoption ( voteoption, vsid, voteorder)
-values ( 'ä¸‡èƒ½æ‹¼éŸ³', 2, 9);
-insert into voteoption ( voteoption, vsid, voteorder)
-values ( 'ä¸‡èƒ½äº”ç¬”', 2, 10);
-insert into voteoption ( voteoption, vsid, voteorder)
-values ( 'æå“æ‹¼éŸ³', 2, 11);
-insert into voteoption ( voteoption, vsid, voteorder)
-values ( 'æå“äº”ç¬”', 2, 12);
-insert into voteoption ( voteoption, vsid, voteorder)
-values ( 'ä¸–ç•Œä¹‹çª—æµè§ˆå™¨', 5, 3);
-insert into voteoption ( voteoption, vsid, voteorder)
-values ( '360æµè§ˆå™¨', 5, 4);
-insert into voteoption ( voteoption, vsid, voteorder)
-values ( 'å‚²æ¸¸æµè§ˆå™¨', 5, 5);
-insert into voteoption ( voteoption, vsid, voteorder)
-values ( 'è°·æ­Œï¼ˆChromeï¼‰æµè§ˆå™¨', 5, 6);
-insert into voteoption ( voteoption, vsid, voteorder)
-values ( 'å¡å·´æ–¯åŸº', 6, 1);
-insert into voteoption ( voteoption, vsid, voteorder)
-values ( '360æ€æ¯’', 6, 2);
-insert into voteoption ( voteoption, vsid, voteorder)
-values ( 'McAfee', 6, 3);
-insert into voteoption ( voteoption, vsid, voteorder)
-values ( 'AVG', 6, 4);
-insert into voteoption ( voteoption, vsid, voteorder)
-values ( 'è¯ºé¡¿æ€æ¯’', 6, 5);
-insert into voteoption ( voteoption, vsid, voteorder)
-values ( 'ç‘æ˜Ÿæ€æ¯’', 6, 6);
-insert into voteoption ( voteoption, vsid, voteorder)
-values ('é‡‘å±±æ¯’éœ¸', 6, 7);
-insert into voteoption ( voteoption, vsid, voteorder)
-values ( 'æ±Ÿæ°‘æ€æ¯’', 6, 8);
-insert into voteoption ( voteoption, vsid, voteorder)
-values ( 'å¾®ç‚¹é˜²å¾¡', 6, 9);
-insert into voteoption ( voteoption, vsid, voteorder)
-values ( 'è¶‹åŠ¿æ€æ¯’', 6, 10);
-insert into voteoption ( voteoption, vsid, voteorder)
-values ('åœ°åŸŸ', 4, 1);
-insert into voteoption ( voteoption, vsid, voteorder)
-values ( 'å¤©å ‚', 4, 2);
-
-
-insert into voteitem(voteid,vsid,uid) values( 1,3,1);      --1å·ç”¨æˆ·æŠ•ç¥¨3å·ä¸»é¢˜(é€‰å‡ºä½ å¿ƒç›®ä¸­æœ€å¥½çš„ç½‘ç»œèŠå¤©å·¥å…·, 7ä¸ªé€‰é¡¹)é€‰äº†a( è…¾è®¯QQ)
-insert into voteitem(voteid,vsid,uid) values( 2,3,1);      ----1å·ç”¨æˆ·æŠ•ç¥¨3å·ä¸»é¢˜(é€‰å‡ºä½ å¿ƒç›®ä¸­æœ€å¥½çš„ç½‘ç»œèŠå¤©å·¥å…·)é€‰äº†b(MSN)
-insert into voteitem(voteid,vsid,uid) values( 4,3,1);      ----1å·ç”¨æˆ·æŠ•ç¥¨3å·ä¸»é¢˜(é€‰å‡ºä½ å¿ƒç›®ä¸­æœ€å¥½çš„ç½‘ç»œèŠå¤©å·¥å…·)é€‰äº†c(æ–°æµªUC)
-
-insert into voteitem(voteid,vsid,uid) values( 4,3,2);      ----2å·ç”¨æˆ·æŠ•ç¥¨3å·ä¸»é¢˜(é€‰å‡ºä½ å¿ƒç›®ä¸­æœ€å¥½çš„ç½‘ç»œèŠå¤©å·¥å…·)é€‰äº†c(æ–°æµªUC)
-
-insert into voteitem(voteid,vsid,uid) values( 3,1,1);      ----1å·ç”¨æˆ·æŠ•ç¥¨1å·ä¸»é¢˜(é€‰å‡ºä½ å¿ƒç›®ä¸­æœ€å¥½çš„ä¸‹è½½å·¥å…·, 5ä¸ªé€‰é¡¹)é€‰äº†a(è¿…é›·)
-
--- distinct(uid)å»é‡, å› ä¸ºä¸€ä¸ªç”¨æˆ·å¯ä»¥å¯¹å¤šé€‰é¢˜è¿›è¡Œå¤šä¸ªæŠ•ç¥¨
-select a.vsid,a.title,a.stype,a.usercount,  ifnull(b.optioncount,0) as optioncount from (
-		select votesubject.vsid,votesubject.title,votesubject.stype,count( distinct(uid)) as usercount 
-		from voteitem 
-		right join votesubject
-		on voteitem.vsid=votesubject.vsid
-		group by voteitem.vsid, votesubject.title
-	) a
-	left join (
-		select votesubject.vsid, count( * ) as optioncount
-		from votesubject
-		inner join voteoption
-		on voteoption.vsid=votesubject.vsid
-		group by votesubject.vsid
-	)b
-	on a.vsid=b.vsid 
-where a.vsid=6
-
-
-
---æ±‚å‡ºæŸä¸ªä¸»é¢˜(å¦‚3å·ä¸»é¢˜)ä¸‹æ¯ä¸ªé€‰é¡¹çš„ç”¨æˆ·é€‰æ‹©æ•°
-select a.voteid,a.voteoption,ifnull(b.votecount,0) as votecount from 
-(
-	select vsid, voteid,voteoption from voteoption where vsid=1
-)a
-left join 
-(
-	select vsid,voteid,count(voteid) as votecount  from voteitem
-	where vsid=1 
-	group by voteid
-)b
-on a.voteid=b.voteid
-
-select * from voteitem;
-
-select * from voteoption;
-
-select a.vsid,a.title,a.stype,a.usercount,  ifnull(b.optioncount,0) as optioncount from (   select votesubject.vsid,votesubject.title,votesubject.stype,count( distinct(uid)) as usercount   from voteitem  right join votesubject  on voteitem.vsid=votesubject.vsid  group by voteitem.vsid, votesubject.title  ) a  left join (  select votesubject.vsid, count( * ) as optioncount  from votesubject  inner join voteoption  on voteoption.vsid=votesubject.vsid  group by votesubject.vsid  )b  on a.vsid=b.vsid 
-
-
-
-
-
-
-
-
+alter table opinion
+    add constraint fk_opinion
+       foreign key( do_id ) references document(do_id);
