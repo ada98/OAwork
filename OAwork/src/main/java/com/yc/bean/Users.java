@@ -103,20 +103,4 @@ public class Users implements Serializable {
 				+ s_alary + ", u_photo=" + u_photo + ", u_status=" + u_status + ", r_id=" + r_id + ", d_id=" + d_id
 				+ "]";
 	}
-	public Users(String u_name, String u_pwd, String u_sex, String u_tel, String u_email, String u_dress, String u_card,
-			double s_alary, String u_photo, Integer u_status, Integer r_id, Integer d_id) {
-		super();
-		this.u_name = u_name;
-		this.u_pwd = u_pwd;
-		this.u_sex = u_sex;
-		this.u_tel = u_tel;
-		this.u_email = u_email;
-		this.u_dress = u_dress;
-		this.u_card = u_card;
-		this.s_alary = s_alary;
-		this.u_photo = u_photo;
-		this.u_status = u_status;
-		this.r_id = r_id;
-		this.d_id = d_id;
-	}
 }

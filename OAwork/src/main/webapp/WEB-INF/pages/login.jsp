@@ -17,11 +17,7 @@
 <link rel="stylesheet" href="css/login.css">
 <script src="js/jquery-1.11.0.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<!--[if lt IE 9]>
-	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
-    <script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script>
-    <script src="http://cdn.bootcss.com/respond.js/1.3.0/respond.min.js"></script>
-<![endif]-->
+
 <script>
 	$(function(){ 
 		$(".container").css("position","fixed").css("top",($(window).height()-$(".container").height())/2)
@@ -50,6 +46,26 @@
 		$(".register-page").removeClass("slidePageInFromLeft").addClass("slidePageBackLeft");
 	}
 		
+	$(function(){
+		$("#inputbutton").click(function(){
+			$.ajax({
+				type:"POST",
+				data:$("#myform").serialize(),
+				url:"login.action",
+				dataType:"JSON",
+				success:function(data){
+					//alert(1111);
+					if(data.code==1){
+						alert("登录成功！");
+						 location.href="toMain.action";
+					}else{
+						alert("登录失败！原因:"+data.msg);
+					} 
+				}
+			});
+		});	
+	});
+	
 </script>
 </head>
 
@@ -60,16 +76,16 @@
             	<div class="panel">
                 	<div class="panel-heading login-top">用户登录</div>
                     <div class="panel-body">
-                    	<form class="form-group col-lg-10 col-md-offset-1" action="login.action" method="post" role="form">
+                    	<form id="myform" class="form-group col-lg-10 col-md-offset-1" action="login.action" method="post" role="form">
                             <input type="hidden" name="op" value="login"/>
                             <div class="input-group">
-                            	<label for="aname" class="input-group-addon">用户名</label>
-                                <input type="text" class="form-control" name="aname" id="aname" required placeholder="请输入用户名"/>
+                            	<label for="u_name" class="input-group-addon">用户名</label>
+                                <input type="text" class="form-control" name="u_name" id="u_name" required placeholder="请输入用户名"/>
                             </div>
                             <br />
                             <div class="input-group">
-                            	<label for="pwd" class="input-group-addon">密&nbsp;&nbsp;&nbsp;码</label>
-                                <input type="password" class="form-control" name="pwd" id="pwd" required  placeholder="请输入密码"/>
+                            	<label for="u_pwd" class="input-group-addon">密&nbsp;&nbsp;&nbsp;码</label>
+                                <input type="password" class="form-control" name="u_pwd" id="u_pwd" required  placeholder="请输入密码"/>
                             </div>
                             <br />
                             <div class="input-group">
@@ -79,9 +95,10 @@
                             </div>
                             <br/>
                             <div class="input-group">
-                            	<input type="submit" value="登陆" class="btn btn-success mybtn"/>
+                            	<input type="button" value="登陆" id="inputbutton" class="btn btn-success mybtn"/>
                                 <input type="reset" value="重置" class="btn btn-warning mybtn"/>
                             </div>
+                            <div class="error"></div>
                 		</form>
                     </div>
                     <div class="panel-footer login-footer">源辰信息 &copy; 版权所有</div>

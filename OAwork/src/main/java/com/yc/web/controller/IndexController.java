@@ -7,15 +7,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class IndexController {
 	@RequestMapping(value="/index.action", method=RequestMethod.GET)
-	public String index(){
-		return "main";
+	public String toLogin(){
+		return "login";
 	}
 	
 	@RequestMapping(value="/westpanel.action", method=RequestMethod.GET)
-	public String westpanel(){
+	public String toWestpanel(){
 		return "westpanel";
 	}
 	
+	
+	@RequestMapping(value="/toMain.action", method=RequestMethod.GET)
+	public String toMain(){
+		return "main";
+	}
 	
 	
 }
