@@ -29,7 +29,6 @@ public class RequestUtil<T> {
 				for (Method m : setMethods) {
 					// 判断是哪一个set方法要运行起来
 					if (m.getName().equalsIgnoreCase("set" + p)) {
-						// TODO:还需要判断m这个setXXX(参数类型)
 						// 判断参数的类型
 						Class typeClass = m.getParameterTypes()[0];// 因为set方法是标准的javabean方法，他的参数有且只有一个
 						String typeClassName = typeClass.getName();
@@ -82,7 +81,7 @@ public class RequestUtil<T> {
 				for (Method m : setMethods) {
 					// 判断是哪一个set方法要运行起来
 					if (m.getName().equalsIgnoreCase("set" + p)) {
-						// TODO:还需要判断m这个setXXX(参数类型)
+						// 还需要判断m这个setXXX(参数类型)
 						// 判断参数的类型
 						Class typeClass = m.getParameterTypes()[0];// 因为set方法时标准的javabean方法，他的参数有且只有一个
 						String typeClassName = typeClass.getName();

@@ -26,7 +26,7 @@ public class InitListener implements ServletContextListener {
 		//取application
 		ServletContext application=sce.getServletContext();
 		ac=WebApplicationContextUtils.getWebApplicationContext(application);
-		//TODO:容器初始化
+		//容器初始化
 
 	}
 

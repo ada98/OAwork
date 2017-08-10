@@ -20,7 +20,7 @@ public class RightFilter implements Filter {
 		
 	}
 
-	//TODO:权限控制
+	//权限控制
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest req=(HttpServletRequest) request;
 		HttpServletResponse resp=(HttpServletResponse) response;

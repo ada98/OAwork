@@ -12,12 +12,15 @@
 	
 </script>
 
+<link rel="stylesheet" type="text/css" href="css/index.css">
 </head>
 <body>
-	<div class="easyui-layout" style="width:100%;height:800px;">
-		<div data-options="region:'north'" style="height:50px">logo首部</div>
-		<div data-options="region:'south',split:true" style="height:50px;">底部</div>
-		<div data-options="region:'east',split:true" title="East" style="width:180px;">右边</div>
+	<div class="easyui-layout" style="width:100%;height:850px;">
+		<div data-options="region:'north'" style="height:50px">
+			
+			<input type="button" value="退出" onclick="location.href='index.action'" id="exit"/>
+			<li id="hello">  欢迎您:${user.u_name } &nbsp;&nbsp;&nbsp;&nbsp; </li>
+		</div>
 		<div data-options="region:'west',split:true" title="功能列表" style="width:150px;">
 			<div id="westpanel">
 				

@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="css/login.css">
 <script src="js/jquery-1.11.0.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script src="js/common.js"></script>
 
 <script>
 	$(function(){ 
@@ -56,7 +57,6 @@
 				success:function(data){
 					//alert(1111);
 					if(data.code==1){
-						alert("登录成功！");
 						 location.href="toMain.action";
 					}else{
 						alert("登录失败！原因:"+data.msg);
@@ -91,7 +91,7 @@
                             <div class="input-group">
                             	<label for="vcode" class="input-group-addon">验证码</label>
                                 <input type="text" class="form-control" name="vcode" id="vcode" required placeholder="请输入右边的验证码"/>
-                                <label class="input-group-btn"><img src="image.jsp" /></label>
+                                <label class="input-group-btn"><img src="image.jsp" onclick="changeVilidateCode(this)"/></label>
                             </div>
                             <br/>
                             <div class="input-group">
