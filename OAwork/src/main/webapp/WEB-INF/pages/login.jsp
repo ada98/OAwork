@@ -79,8 +79,8 @@
                     	<form id="myform" class="form-group col-lg-10 col-md-offset-1" action="login.action" method="post" role="form">
                             <input type="hidden" name="op" value="login"/>
                             <div class="input-group">
-                            	<label for="u_name" class="input-group-addon">用户名</label>
-                                <input type="text" class="form-control" name="u_name" id="u_name" required placeholder="请输入用户名"/>
+                            	<label for="u_wid" class="input-group-addon">工&nbsp;&nbsp;&nbsp;号</label>
+                                <input type="text" class="form-control" name="u_wid" id="u_wid" required placeholder="请输入用户名"/>
                             </div>
                             <br />
                             <div class="input-group">

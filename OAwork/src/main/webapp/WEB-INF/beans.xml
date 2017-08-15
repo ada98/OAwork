@@ -96,11 +96,32 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 
-
-
-
-
-
-
-
+	<!-- multipart解析器的配置
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+      <property name="maxUploadSize" value="104857600"/>
+        <property name="maxInMemorySize" value="4096"/>
+    </bean> -->
+    
+    <!-- 配置文件上传类型解析器 multipartResolver-->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+		
+	<mvc:interceptors>
+		<mvc:interceptor>
+			  <!-- /**表示所有URL和子URL路径 -->
+			  <mvc:mapping path="/**" />
+			  <!-- 配置自定义的文件上传类型限制拦截器 -->
+			  <bean class="com.yc.web.interceptor.FileTypeInterceptor" />
+		</mvc:interceptor>
+	
+		<mvc:interceptor>
+			  <mvc:mapping path="/**"/>
+			  <bean class="com.yc.web.interceptor.FileUploadInterceptor">
+			       <!-- 设定限制的文件上传大小 -->
+			       <property name="maxSize" value="5242880"/>
+			  </bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+	
+	
+	
 </beans>

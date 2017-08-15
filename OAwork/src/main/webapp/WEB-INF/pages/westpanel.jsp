@@ -25,23 +25,47 @@
 		} ];
 
 		showTree("documentTypeTree", treeData);
-	});
-
-	$(function() {
+		
 		var treeDataNews = [ {
 			"text" : "内部通讯",
 			"children" : [
 					{
-						"text" : "发送消息"
+						"text" : "发送消息",
+						"attributes" : {
+							"url" : "<iframe src='message/toAddMessage.action' style='width:100%;height:100%' />"
+						} 
 					},
 					{
-						"text" : "接收消息"
+						"text" : "收件箱",
+						"attributes" : {
+							"url" : "<iframe src='message/toReceiveMessageList.action' style='width:100%;height:100%' />"
+						} 
 					},{
-						"text" : "消息列表"
+						"text" : "发件箱",
+						"attributes" : {
+							"url" : "<iframe src='message/toSendMessageList.action' style='width:100%;height:100%' />"
+						} 
 					} ]
 		} ];
+		
 		showTree("messageTypeTree", treeDataNews);
+		
+		var treeDataNews = [ {
+			"text" : "发布公告",
+			"attributes" : {
+				"url" : "<iframe src='notice/toAddNotice.action' style='width:100%;height:100%' />"
+			} 
+			
+		},{
+			"text" : "查看公告",
+			"attributes" : {
+				"url" : "<iframe src='notice/toNoticeList.action' style='width:100%;height:100%' />"
+			} 
+		} ];
+		showTree("noticeTypeTree", treeDataNews);
 	});
+
+	
 
 	function openTab(node) { //明明是两个不同的界面，为什么可以调main.jsp的id
 		if ($("#mainTt").tabs("exists", node.text)) {
@@ -50,13 +74,7 @@
 			$("#mainTt").tabs("add", {
 				title : node.text,
 				selected : true,
-				closed : true,
-				tools : [ {
-					iconCls : 'icon-cancel',
-					handler : function() {
-						alert('save')
-					}
-				} ],
+				closable : true,
 				//href:node.attributes.url
 				content : node.attributes.url
 			})

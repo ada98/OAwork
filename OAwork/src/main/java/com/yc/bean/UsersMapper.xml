@@ -10,7 +10,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 根据用户名和密码查询用户 -->
 	<select id="getUserByLogin" resultType="Users" parameterType="Users">
-		select * from users where u_name=#{u_name} and u_pwd=#{u_pwd}
+		select * from users where u_wid=#{u_wid} and u_pwd=#{u_pwd}
 	</select>
 	
 </mapper>

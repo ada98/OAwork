@@ -11,7 +11,7 @@ create table department(
 	temp1 varchar(200),
 	temp2 varchar(200)
 );
-
+select * from notice;
 --职务表
 	--职务编号
 	--职务
@@ -92,7 +92,7 @@ create table message(
 	temp1 varchar(200),
 	temp2 varchar(200)	
 );
-
+select count(1) from notice
 --公文表
 	--公文编号
 	--标题
@@ -143,20 +143,22 @@ create table opinion(
 --公告通知表
 	--公告编号
 	--标题
-	--发布人
+	--发布人姓名
 	--发布部门
 	--公告内容
 	--公告时间
 	
 	--附件ID=文件id
 	--权重   0：代表一般 1.重要  2.特别重要
+	
+	--浏览次数 
 create table notice(
 	n_id int primary key auto_increment,
 	n_title varchar(200) not null,
-	n_send int not null,
-	n_department varchar(100) not null,
+	u_name varchar(200) not null,
+	d_name varchar(100) ,
 	n_content varchar(4000),
-	n_time date,
+	n_time date not null,
 	n_file varchar(200),
 	n_weight int  default 0 ,
 	
@@ -164,6 +166,9 @@ create table notice(
 	temp2 varchar(200)
 	
 )
+select * from notice;
+drop table notice;
+
 
 --文件表(文件的实体表)
 	--文件编号

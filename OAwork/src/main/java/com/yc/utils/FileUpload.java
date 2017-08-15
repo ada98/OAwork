@@ -22,7 +22,7 @@ import com.jspsmart.upload.SmartUploadException;
 
 public class FileUpload {
 	private long singleSize = 10 * 1024 * 1024;
-	private String allowedFilesList="gif,jpg,jpeg,png";
+	private String allowedFilesList="gif,jpg,jpeg,png,docx,xlsx";
 	private String deniedFilesList="jsp,asp,php,aspx,html,htm,exe,bat,sh";
 	private long totalFileSize=5*singleSize;
 	

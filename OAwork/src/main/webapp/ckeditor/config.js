@@ -38,4 +38,6 @@ CKEDITOR.editorConfig = function( config ) {
 	
 	//上传图片的服务器端地址
 	config.filebrowserImageUploadUrl= "user/uploadSinglePic.jsp"; 
+	
+	
 };
