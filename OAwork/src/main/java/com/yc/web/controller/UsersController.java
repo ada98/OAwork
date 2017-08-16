@@ -60,7 +60,7 @@ public class UsersController {
 	public JsonModel findDo_receive(Users user,HttpSession session){
 		try {
 			Users u=(Users) session.getAttribute("user");
-			user.setD_name(u.getD_name());
+			user.setD_id(u.getD_id());
 			JsonModel jm=new JsonModel();
 			List<Users>	list=this.usersBiz.findDo_receive(user);
 			jm.setRows(list);

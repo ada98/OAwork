@@ -18,9 +18,10 @@ public class Users implements Serializable {
 	private double s_alary;		
 	private String u_photo;		
 	private Integer u_status;   		
-	private String r_name;
-	private String d_name;
+	private Integer r_id;
+	private Integer d_id;
 	private Date u_date;
+	
 	public Integer getU_id() {
 		return u_id;
 	}
@@ -93,17 +94,17 @@ public class Users implements Serializable {
 	public void setU_status(Integer u_status) {
 		this.u_status = u_status;
 	}
-	public String getR_name() {
-		return r_name;
+	public Integer getR_id() {
+		return r_id;
 	}
-	public void setR_name(String r_name) {
-		this.r_name = r_name;
+	public void setR_id(Integer r_id) {
+		this.r_id = r_id;
 	}
-	public String getD_name() {
-		return d_name;
+	public Integer getD_id() {
+		return d_id;
 	}
-	public void setD_name(String d_name) {
-		this.d_name = d_name;
+	public void setD_id(Integer d_id) {
+		this.d_id = d_id;
 	}
 	public Date getU_date() {
 		return u_date;
@@ -111,14 +112,12 @@ public class Users implements Serializable {
 	public void setU_date(Date u_date) {
 		this.u_date = u_date;
 	}
+	
 	@Override
 	public String toString() {
 		return "Users [u_id=" + u_id + ", u_wid=" + u_wid + ", u_name=" + u_name + ", u_pwd=" + u_pwd + ", u_sex="
 				+ u_sex + ", u_tel=" + u_tel + ", u_email=" + u_email + ", u_dress=" + u_dress + ", u_card=" + u_card
-				+ ", s_alary=" + s_alary + ", u_photo=" + u_photo + ", u_status=" + u_status + ", r_name=" + r_name
-				+ ", d_name=" + d_name + ", u_date=" + u_date + "]";
+				+ ", s_alary=" + s_alary + ", u_photo=" + u_photo + ", u_status=" + u_status + ", r_id=" + r_id
+				+ ", d_id=" + d_id + ", u_date=" + u_date + "]";
 	}
-	
-	
-	
 }

@@ -3,44 +3,17 @@ package com.yc.bean;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Notice extends CommonBean implements Serializable {
-	private static final long serialVersionUID = 1L;
+public class Notice implements Serializable {
+	private static final long serialVersionUID = -3042360926416388190L;
 	
 	private Integer n_id;
 	private String n_title;
-	private String u_name;
-	private String d_name;
-	private String n_content ;
-	private String n_time;
-	private String n_file;
+	private Integer u_id;
+	private String n_content;
+	private Date n_time;
+	private String fid;
 	private Integer n_weight;
 	
-	private String date_from;
-	private String date_to;
-	
-	//easyui ids批量删除
-	private String ids;
-	
-	
-	
-	public String getIds() {
-		return ids;
-	}
-	public void setIds(String ids) {
-		this.ids = ids;
-	}
-	public String getDate_from() {
-		return date_from;
-	}
-	public void setDate_from(String date_from) {
-		this.date_from = date_from;
-	}
-	public String getDate_to() {
-		return date_to;
-	}
-	public void setDate_to(String date_to) {
-		this.date_to = date_to;
-	}
 	public Integer getN_id() {
 		return n_id;
 	}
@@ -53,17 +26,11 @@ public class Notice extends CommonBean implements Serializable {
 	public void setN_title(String n_title) {
 		this.n_title = n_title;
 	}
-	public String getU_name() {
-		return u_name;
+	public Integer getU_id() {
+		return u_id;
 	}
-	public void setU_name(String u_name) {
-		this.u_name = u_name;
-	}
-	public String getD_name() {
-		return d_name;
-	}
-	public void setD_name(String d_name) {
-		this.d_name = d_name;
+	public void setU_id(Integer u_id) {
+		this.u_id = u_id;
 	}
 	public String getN_content() {
 		return n_content;
@@ -71,19 +38,17 @@ public class Notice extends CommonBean implements Serializable {
 	public void setN_content(String n_content) {
 		this.n_content = n_content;
 	}
-	
-	
-	public String getN_time() {
+	public Date getN_time() {
 		return n_time;
 	}
-	public void setN_time(String n_time) {
+	public void setN_time(Date n_time) {
 		this.n_time = n_time;
 	}
-	public String getN_file() {
-		return n_file;
+	public String getFid() {
+		return fid;
 	}
-	public void setN_file(String n_file) {
-		this.n_file = n_file;
+	public void setFid(String fid) {
+		this.fid = fid;
 	}
 	public Integer getN_weight() {
 		return n_weight;
@@ -91,14 +56,10 @@ public class Notice extends CommonBean implements Serializable {
 	public void setN_weight(Integer n_weight) {
 		this.n_weight = n_weight;
 	}
+	
 	@Override
 	public String toString() {
-		return "Notice [n_id=" + n_id + ", n_title=" + n_title + ", u_name=" + u_name + ", d_name=" + d_name
-				+ ", n_content=" + n_content + ", n_time=" + n_time + ", n_file=" + n_file + ", n_weight=" + n_weight
-				+ "]";
+		return "Notice [n_id=" + n_id + ", n_title=" + n_title + ", u_id=" + u_id + ", n_content=" + n_content
+				+ ", n_time=" + n_time + ", fid=" + fid + ", n_weight=" + n_weight + "]";
 	}
-	
-	
-	
-	
 }

@@ -1,31 +1,19 @@
 package com.yc.bean;
 
 import java.io.Serializable;
+import java.util.Date;
 
-public class Message extends CommonBean implements Serializable{
+public class Message implements Serializable {
+	private static final long serialVersionUID = -7357085473042808947L;
 	
-	/*m_id int primary key auto_increment,
-	m_title varchar(200) not null,
-	m_send int not null,
-	m_recevie int not null,
-	m_content varchar(4000) not null,
-	m_date date not null,
-	m_file varchar(200),
-	m_status int default 0,
-	temp1 varchar(200),
-	temp2 varchar(200)*/	
-	
-	
-	private static final long serialVersionUID = 1L;
 	private Integer m_id;
 	private String m_title;
 	private Integer m_send;
 	private Integer m_recevie;
 	private String m_content;
-	private String m_date;
-	private String m_file;
+	private Date m_date;
+	private String fid;
 	private Integer m_status;
-	
 	
 	public Integer getM_id() {
 		return m_id;
@@ -57,17 +45,17 @@ public class Message extends CommonBean implements Serializable{
 	public void setM_content(String m_content) {
 		this.m_content = m_content;
 	}
-	public String getM_date() {
+	public Date getM_date() {
 		return m_date;
 	}
-	public void setM_date(String m_date) {
+	public void setM_date(Date m_date) {
 		this.m_date = m_date;
 	}
-	public String getM_file() {
-		return m_file;
+	public String getFid() {
+		return fid;
 	}
-	public void setM_file(String m_file) {
-		this.m_file = m_file;
+	public void setFid(String fid) {
+		this.fid = fid;
 	}
 	public Integer getM_status() {
 		return m_status;
@@ -76,6 +64,9 @@ public class Message extends CommonBean implements Serializable{
 		this.m_status = m_status;
 	}
 	
-	
-
+	@Override
+	public String toString() {
+		return "Message [m_id=" + m_id + ", m_title=" + m_title + ", m_send=" + m_send + ", m_recevie=" + m_recevie
+				+ ", m_content=" + m_content + ", m_date=" + m_date + ", fid=" + fid + ", m_status=" + m_status + "]";
+	}
 }

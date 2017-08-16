@@ -4,9 +4,6 @@
 <script type="text/javascript">
 	$(function() {
 		var treeData = [ {
-			"text" : "类别管理",
-			"children" : [
-					{
 						"text" : "发送公文",
 						"attributes" : {
 							"url":"<iframe height=100% width=100% src='todocument.action' />", 
@@ -22,7 +19,7 @@
 						"attributes" : {
 							"url":"<iframe height=100% width=100% src='todocumentsend.action' />", 
 						}
-					}]
+					
 		} ];
 
 		showTree("documentTypeTree", treeData);

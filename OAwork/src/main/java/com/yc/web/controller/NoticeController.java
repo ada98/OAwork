@@ -39,11 +39,10 @@ public class NoticeController{
 		JsonModel jm=new JsonModel();
 		try {
 			Users user=(Users) session.getAttribute("user");
-			notice.setD_name(user.getD_name());
-			notice.setU_name(user.getU_name());
+			notice.setU_id(user.getU_id());
 			SMFileUpload file=new SMFileUpload();
 			List<Map<String,String>> list=file.Upload(request);
-			notice.setN_file(list.get(0).get("weburl"));
+			notice.setFid(list.get(0).get("weburl"));
 			this.noticeBiz.addNotice(notice);
 			jm.setCode(1);
 			request.getRequestDispatcher("toSuccess.action").forward(request, response);
