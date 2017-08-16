@@ -5,7 +5,7 @@
 
 <script type="text/javascript">
 	$(function(){
-		$('#westpanel').panel({
+		$("#westpanel").panel({
 			href:'westpanel.action'
 		});
 	});

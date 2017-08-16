@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yc.bean.NoticeMapper">
+
+	<!-- 加入带日志的ehchche缓存 -->
+	<cache type="org.mybatis.caches.ehcache.LoggingEhcache">
+	</cache>
+	
+	<!-- EasyUI 排序条件的拼接 -->
+	<sql id="orderSql">
+		<if test="order!=null and order!=''">
+			order by #{order}
+		</if>
+		<if test="orderby!=null and orderby!=''">
+			order by #{orderby}
+			<if test="orderway!=null and orderway!=''">
+				#{orderway}
+			</if>
+		</if>
+	</sql>
+	
+	<!-- 分页条件的拼接 -->
+	<sql id="pageSql">
+		<if test="start!=null and rows!=null">
+			limit #{start},#{rows}
+		</if>
+		<if test="start!=null and pagesize!=null and rows==null">
+			limit #{start},#{pagesize}
+		</if>
+	</sql>
+	
+	<!-- 查询所有的notice 带分页-->
+	<select id="findAllNotice" parameterType="Notice" resultType="Notice">
+		select n_id,n_title,u_name,ifnull(d_name,'无') as d_name,n_content,date_format(n_time,'%Y-%c-%d %h:%i:%s') as n_time,n_file,n_weight from notice 
+ 	 	where 1=1 
+ 		<if test="date_from!=null and date_from!=''">
+ 			and n_time >str_to_date( #{date_from}, '%Y-%c-%d')
+ 		</if>
+ 		<if test="date_to!=null and date_to!=''">
+ 			and  str_to_date( #{date_to}, '%Y-%c-%d')> n_time
+ 		</if>
+ 		<if test="n_title!=null and n_title!=''">
+ 			and n_title like '%${n_title}%'
+ 		</if>
+ 		
+		<include refid="orderSql" />
+		<include refid="pageSql" />
+	</select>
+	
+	<!-- 添加notice -->
+	 <insert id="addNotice" parameterType="Notice" useGeneratedKeys="true" keyProperty="n_id">
+		insert into notice(n_title,u_name,d_name,n_content,n_time,n_file,n_weight)
+			values(#{n_title},#{u_name},#{d_name},#{n_content},now(),#{n_file},#{n_weight});
+	</insert> 
+	
+	
+	<!-- 查询公告个数 -->
+	<select id="findAllNoticeCount" resultType="java.lang.Integer">
+		select count(*) from notice
+	</select>
+	
+	<!-- 批量删除公告 +ids -->
+    <delete id="batchDelNotice" parameterType="Notice">  
+	    delete from notice where n_id in  (#{ids})
+	</delete>  
+	
+	<!-- 查询单条记录 -->
+	<select id="findNoticeBynid" parameterType="Notice" resultType="Notice">
+		select * from notice where n_id=#{n_id}
+	</select>
+	
+</mapper>

@@ -1,5 +1,7 @@
 package com.yc.biz.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -24,6 +26,13 @@ public class UsersBizImpl implements UsersBiz {
 		users.setU_pwd(Encrypt.md5AndSha(users.getU_pwd()));
 		Users u=(Users) this.baseDao.findOne(users, "getUserByLogin");
 		return u;
+	}
+
+	@Override
+	public List<Users> findDo_receive(Users users) throws Exception {
+		List<Users> list=null;
+		list=this.baseDao.findAll(users, "getUserByd_name");
+		return list;
 	}
 	
 }

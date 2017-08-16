@@ -3,3 +3,4 @@
 *.class
 pom.xml
 
+/bin/

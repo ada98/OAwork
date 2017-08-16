@@ -96,6 +96,7 @@ select * from notice;
 select * from file;
 
 
+
 drop table file;
 drop table notice;
 drop table opinion;

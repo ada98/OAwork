@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yc.bean.MessageMapper">
+
+	<!-- 加入带日志的ehchche缓存 -->
+	<cache type="org.mybatis.caches.ehcache.LoggingEhcache">
+	</cache>
+	
+	<!-- EasyUI 排序条件的拼接 -->
+	<sql id="orderSql">
+		<if test="order!=null and order!=''">
+			order by #{order}
+		</if>
+		<if test="orderby!=null and orderby!=''">
+			order by #{orderby}
+			<if test="orderway!=null and orderway!=''">
+				#{orderway}
+			</if>
+		</if>
+	</sql>
+	
+	<!-- 分页条件的拼接 -->
+	<sql id="pageSql">
+		<if test="start!=null and rows!=null">
+			limit #{start},#{rows}
+		</if>
+		<if test="start!=null and pagesize!=null and rows==null">
+			limit #{start},#{pagesize}
+		</if>
+	</sql>
+	
+	
+	
+	<!-- 单插入 -->
+	<select id="addMessage" parameterType="Message">
+		insert into message(m_title,m_send,m_recevie,m_content,m_date,m_file,m_status) values(#{m_title},#{m_send},#{m_recevie},#{m_content},now(),#{m_file},default);
+	</select>
+	
+	
+</mapper>
