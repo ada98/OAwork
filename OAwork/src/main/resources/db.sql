@@ -74,12 +74,12 @@ drop table users;
 --消息表
 	--消息编号
 	--标题
-	--发送人
-	--接收人
+	--发送人  id
+	--接收 id
 	--内容
 	--发送时间
-	--附件
-	--是否已阅
+	--附件    文件id
+	--是否已阅  0未阅  1已阅
 create table message(
 	m_id int primary key auto_increment,
 	m_title varchar(200) not null,
@@ -87,12 +87,19 @@ create table message(
 	m_recevie int not null,
 	m_content varchar(4000) not null,
 	m_date date not null,
-	m_file varchar(200),
-	m_status int default 0,
+	fid int,
+	m_status int default 0, 
 	temp1 varchar(200),
 	temp2 varchar(200)	
 );
-select count(1) from notice
+
+
+--文件表的u_id外键
+alter table message
+    add constraint fk_message_fid
+       foreign key(fid ) references file(fid);
+
+
 --公文表
 	--公文编号
 	--标题
@@ -148,7 +155,7 @@ create table opinion(
 	--公告内容
 	--公告时间
 	
-	--附件ID=文件id
+	--附件ID  =文件id
 	--权重   0：代表一般 1.重要  2.特别重要
 	
 	--浏览次数 
@@ -178,7 +185,7 @@ drop table notice;
 	--外键，user表的id,文件发布者
 	--上传时间
 	
-	--文件状态 是否可读。1代表可读，0代表不可读
+	--文件状态 是否可读。1代表可读，0代表不可读  删除
 	
 	--阅读次数
 	--下载次数
@@ -186,19 +193,30 @@ create table file(
 	fid int primary key auto_increment,
 	fname varchar(200) not null,
 	fpath varchar(200) not null,
-	fsize double,
-	fuser int,
+	fsize varchar(200),
+	u_id int,
 	ftime date,
 	fstatus int default 1 ,
 	temp1 varchar(200),
 	temp2 varchar(200),
 	
 	f_read int default 0,
-	f_updown int default 0
-	
+	f_updown int default 0	
 );
+select * from file;
+insert into file(fname,fpath,fsize,u_id,ftime)values('大话西游.txt','F:\eclipse','5kB',1,now());
 
 
+--文件表的u_id外键
+alter table file
+    add constraint fk_file_uid
+       foreign key(u_id ) references users(u_id);
+
+
+--文件表的u_id外键
+alter table file
+    add constraint fk_file_uid
+       foreign key(u_id ) references users(u_id);
 
 alter table users
     add constraint fk_users

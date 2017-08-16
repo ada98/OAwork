@@ -78,8 +78,14 @@ m_title varchar(200) not null,
 
 --消息表
 insert into message(m_title,m_send,m_recevie,m_content,m_date,m_file,m_status) values('这是管理员发给管理员的消息',1,1,'管理员---管理员',now(),null,default);
+insert into message(m_title,m_send,m_recevie,m_content,m_date,m_file,m_status) values('这是管理员发给管理员的消息',1,2,'管理员---总经理',now(),null,default);
+insert into message(m_title,m_send,m_recevie,m_content,m_date,m_file,m_status) values('这是管理员发给管理员的消息',2,1,'总经理---管理员',now(),null,default);	
 
-		
+select count(1) from message;
+select a.*,users.d_name from (select * from message where m_send=1 )a left join users on a.m_recevie=users.u_id;
+
+
+
 select * from users;
 select * from department;
 select * from role;
