@@ -1,5 +1,8 @@
 package com.yc.web.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -50,5 +53,21 @@ public class UsersController {
 			}
 		}
 		return jsonmodel;
+	}
+	
+	@RequestMapping("/findDo_receive.action")
+	@ResponseBody
+	public JsonModel findDo_receive(Users user,HttpSession session){
+		try {
+			Users u=(Users) session.getAttribute("user");
+			user.setD_name(u.getD_name());
+			JsonModel jm=new JsonModel();
+			List<Users>	list=this.usersBiz.findDo_receive(user);
+			jm.setRows(list);
+			return jm;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 }

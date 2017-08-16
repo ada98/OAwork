@@ -13,4 +13,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from users where u_name=#{u_name} and u_pwd=#{u_pwd}
 	</select>
 	
+	<!-- 根据部门查询用户-->
+	<select id="getUserByd_name" resultType="Users" parameterType="Users">
+		select * from users where d_name=#{d_name}
+	</select> 
+	
 </mapper>

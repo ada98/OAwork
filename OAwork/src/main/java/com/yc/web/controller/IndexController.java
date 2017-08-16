@@ -21,6 +21,4 @@ public class IndexController {
 	public String toMain(){
 		return "main";
 	}
-	
-	
 }

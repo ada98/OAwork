@@ -28,9 +28,7 @@ create table role(
 
 --员工表        			工号+密码登录  而不采用 姓名+密码登录 ，防止重名的情况
 	--员工编号
-	
 	--工号	u_wid	0001、0002、0003、0004
-
 	--员工姓名
 	--登录密码
 	--性别
@@ -116,6 +114,8 @@ create table document(
 	do_receive int not null,
 	do_status int default 0
 );
+select * from document
+delete from document where 1=1
 --	发送：1.生成一条公文记录 2.根据接收人还要创建一条意见表记录。
 --	接收：1.修改意见表记录  2.查询审批人是否有上一级，有则创建意见表数据。无，则流程结束，修改公文状态为通过；
 --	发送方查询是否审批通过：1.查询出所有的公文记录列表
@@ -194,15 +194,6 @@ create table file(
 );
 
 
-
-alter table users
-    add constraint fk_users
-       foreign key( r_id ) references role(r_id);
-
-alter table users
-    add constraint fk_users_2
-       foreign key( d_id ) references department(d_id);
-
 alter table opinion
     add constraint fk_opinion
-       foreign key( do_id ) references document(do_id);
+       foreign key(do_id) references document(do_id);

@@ -5,14 +5,13 @@
 
 <script type="text/javascript">
 	$(function(){
-		$('#westpanel').panel({
+		$("#westpanel").panel({
 			href:'westpanel.action'
 		});
-	})();
+	});
 	
 </script>
 
-<link rel="stylesheet" type="text/css" href="css/index.css">
 </head>
 <body>
 	<div class="easyui-layout" style="width:100%;height:850px;">

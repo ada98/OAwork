@@ -7,20 +7,21 @@
 			"text" : "类别管理",
 			"children" : [
 					{
-						"text" : "发送公文"/* ,
+						"text" : "发送公文",
 						"attributes" : {
-							//"url":"back/manager/newstype/AddType.jsp"
-							"url" : "<iframe src='back/manager/newstype/AddType.jsp' style='width:100%;height:100%' />"
-						} */
+							"url":"<iframe height=100% width=100% src='todocument.action' />", 
+						}
 					},
 					{
-						"text" : "接收公文"/* ,
+						"text" : "接收公文",
 						"attributes" : {
-							//"url":"back/manager/newstype/ManType.jsp"
-							"url" : "<iframe src='back/manager/newstype/ManType.jsp' style='width:100%;height:100%; border:0px' />"
-						} */
+							"url":"<iframe height=100% width=100% src='todocumentreceive.action' />",
+						}
 					} ,{
-						"text":"公文列表"
+						"text":"公文列表",
+						"attributes" : {
+							"url":"<iframe height=100% width=100% src='todocumentsend.action' />", 
+						}
 					}]
 		} ];
 
@@ -51,13 +52,7 @@
 				title : node.text,
 				selected : true,
 				closed : true,
-				tools : [ {
-					iconCls : 'icon-cancel',
-					handler : function() {
-						alert('save')
-					}
-				} ],
-				//href:node.attributes.url
+				closable:true,
 				content : node.attributes.url
 			})
 		}
@@ -80,9 +75,9 @@
 </script>
 
 
-<div class="easyui-accordion" style="width: 100%; height: 300px;">
+<div class="easyui-accordion" style="width: 100%; height: 670px;">
 	<div title="公文管理" style="overflow: auto; padding: 10px;">
-		<ul id="documentTypeTree" class="easyui-tree" data-options="animate:true,state:closed,fit:true">
+		<ul id="documentTypeTree" class="easyui-tree" data-options="animate:true,state:closed,fit:true,closable:true">
 		</ul>
 	</div>
 	<div title="短消息" style="overflow: auto; padding: 10px;">
